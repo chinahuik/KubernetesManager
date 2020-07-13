@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinahuik.KubernetesManager.dao.NodeImageDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chinahuik.KubernetesManager.model.NodeImage">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="created_by" property="createdBy" />
+    <result column="update_time" property="updateTime" />
+    <result column="updated_by" property="updatedBy" />
+        <result column="node_id" property="nodeId" />
+        <result column="node_name" property="nodeName" />
+        <result column="image_id" property="imageId" />
+        <result column="image_name" property="imageName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        created_by,
+        update_time,
+        updated_by,
+        node_id, node_name, image_id, image_name
+    </sql>
+
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinahuik.KubernetesManager.dao.KubeContainerDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chinahuik.KubernetesManager.model.KubeContainer">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="created_by" property="createdBy" />
+    <result column="update_time" property="updateTime" />
+    <result column="updated_by" property="updatedBy" />
+        <result column="cluster_id" property="clusterId" />
+        <result column="container_type" property="containerType" />
+        <result column="pod_name" property="podName" />
+        <result column="namespace" property="namespace" />
+        <result column="name" property="name" />
+        <result column="image" property="image" />
+        <result column="resources" property="resources" />
+        <result column="volume_mounts" property="volumeMounts" />
+        <result column="image_pull_policy" property="imagePullPolicy" />
+        <result column="start_time" property="startTime" />
+        <result column="ready" property="ready" />
+        <result column="restart_count" property="restartCount" />
+        <result column="image_id" property="imageId" />
+        <result column="container_id" property="containerId" />
+        <result column="started" property="started" />
+        <result column="phase" property="phase" />
+        <result column="last_terminated_exit_code" property="lastTerminatedExitCode" />
+        <result column="last_terminated_reason" property="lastTerminatedReason" />
+        <result column="last_terminated_start_at" property="lastTerminatedStartAt" />
+        <result column="last_terminated_finished_at" property="lastTerminatedFinishedAt" />
+        <result column="cpu_request" property="cpuRequest" />
+        <result column="cpu_limit" property="cpuLimit" />
+        <result column="memory_request" property="memoryRequest" />
+        <result column="memory_limit" property="memoryLimit" />
+        <result column="gpu_request" property="gpuRequest" />
+        <result column="gpu_limit" property="gpuLimit" />
+        <result column="gmem_request" property="gmemRequest" />
+        <result column="gmem_limit" property="gmemLimit" />
+        
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        created_by,
+        update_time,
+        updated_by,
+        cluster_id, container_type, pod_name, namespace, 
+        name, image, resources, volume_mounts, image_pull_policy,
+         start_time, ready, restart_count, image_id, container_id,
+          started, phase, last_terminated_exit_code, 
+          last_terminated_reason, last_terminated_start_at,
+           last_terminated_finished_at,cpu_request,gpu_request,
+           memory_request,gmem_request,cpu_limit,gpu_limit,
+           memory_limit,gmem_limit
+    </sql>
+
+</mapper>

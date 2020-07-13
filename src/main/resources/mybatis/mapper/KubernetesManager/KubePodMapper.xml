@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinahuik.KubernetesManager.dao.KubePodDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chinahuik.KubernetesManager.model.KubePod">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="created_by" property="createdBy" />
+    <result column="update_time" property="updateTime" />
+    <result column="updated_by" property="updatedBy" />
+        <result column="uid" property="uid" />
+        <result column="cluster_id" property="clusterId" />
+        <result column="name" property="name" />
+        <result column="namespace" property="namespace" />
+        <result column="resource_version" property="resourceVersion" />
+        <result column="owner_references" property="ownerReferences" />
+        <result column="self_link" property="selfLink" />
+        <result column="labels" property="labels" />
+        <result column="restart_policy" property="restartPolicy" />
+        <result column="termination_grace_period_seconds" property="terminationGracePeriodSeconds" />
+        <result column="dns_policy" property="dnsPolicy" />
+        <result column="service_account_name" property="serviceAccountName" />
+        <result column="service_account" property="serviceAccount" />
+        <result column="node_name" property="nodeName" />
+        <result column="scheduler_name" property="schedulerName" />
+        <result column="security_context" property="securityContext" />
+        <result column="tolerations" property="tolerations" />
+        <result column="enable_service_links" property="enableServiceLinks" />
+        <result column="phase" property="phase" />
+        <result column="host_ip" property="hostIp" />
+        <result column="pod_ip" property="podIp" />
+        <result column="qos_class" property="qosClass" />
+        <result column="initialized" property="initialized" />
+        <result column="initialized_update_time" property="initializedUpdateTime" />
+        <result column="pod_ready" property="podReady" />
+        <result column="pod_ready_update_time" property="podReadyUpdateTime" />
+        <result column="containers_ready" property="containersReady" />
+        <result column="containers_ready_update_time" property="containersReadyUpdateTime" />
+        <result column="pod_scheduled" property="podScheduled" />
+        <result column="pod_scheduled_update_time" property="podScheduledUpdateTime" />
+        <result column="start_time" property="startTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        created_by,
+        update_time,
+        updated_by,
+        uid, cluster_id, name, namespace, resource_version, 
+        owner_references, self_link, labels, restart_policy, 
+        termination_grace_period_seconds, dns_policy, 
+        service_account_name, service_account, node_name, 
+        scheduler_name, security_context, tolerations, enable_service_links,
+         phase, host_ip, pod_ip, qos_class, initialized, 
+         initialized_update_time, pod_ready, pod_ready_update_time, 
+         containers_ready, containers_ready_update_time, pod_scheduled, 
+        pod_scheduled_update_time,start_time
+    </sql>
+
+</mapper>

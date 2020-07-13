@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinahuik.KubernetesManager.dao.KubeDeploymentDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chinahuik.KubernetesManager.model.KubeDeployment">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="created_by" property="createdBy" />
+    <result column="update_time" property="updateTime" />
+    <result column="updated_by" property="updatedBy" />
+        <result column="uid" property="uid" />
+        <result column="cluster_id" property="clusterId" />
+        <result column="name" property="name" />
+        <result column="namespace" property="namespace" />
+        <result column="resource_version" property="resourceVersion" />
+        <result column="annotations" property="annotations" />
+        <result column="self_link" property="selfLink" />
+        <result column="labels" property="labels" />
+        <result column="generation" property="generation" />
+        <result column="replicas" property="replicas" />
+        <result column="select_labels" property="selectLabels" />
+        <result column="strategy_type" property="strategyType" />
+        <result column="revision_history_limit" property="revisionHistoryLimit" />
+        <result column="progress_deadline_seconds" property="progressDeadlineSeconds" />
+        <result column="observed_generation" property="observedGeneration" />
+        <result column="updated_replicas" property="updatedReplicas" />
+        <result column="ready_replicas" property="readyReplicas" />
+        <result column="available_replicas" property="availableReplicas" />
+        <result column="available" property="available" />
+        <result column="available_reason" property="availableReason" />
+        <result column="available_message" property="availableMessage" />
+        <result column="progressing" property="progressing" />
+        <result column="progressing_reason" property="progressingReason" />
+        <result column="progressing_message" property="progressingMessage" />
+        <result column="template" property="template" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        created_by,
+        update_time,
+        updated_by,
+        uid, cluster_id, name, namespace, resource_version, annotations, self_link, labels, generation, replicas, select_labels, strategy_type, revision_history_limit, progress_deadline_seconds, observed_generation, updated_replicas, ready_replicas, available_replicas, available, available_reason, available_message, progressing, progressing_reason, progressing_message, template
+    </sql>
+
+</mapper>

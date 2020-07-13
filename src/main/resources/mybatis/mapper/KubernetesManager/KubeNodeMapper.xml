@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinahuik.KubernetesManager.dao.KubeNodeDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chinahuik.KubernetesManager.model.KubeNode">
+	    <result column="id" property="id" />
+	    <result column="create_time" property="createTime" />
+	    <result column="created_by" property="createdBy" />
+	    <result column="update_time" property="updateTime" />
+	    <result column="updated_by" property="updatedBy" />
+        <result column="cluster_id" property="clusterId" />
+        <result column="uid" property="uid" />
+        <result column="name" property="name" />
+        <result column="resource_version" property="resourceVersion" />
+        <result column="annotations" property="annotations" />
+        <result column="self_link" property="selfLink" />
+        <result column="labels" property="labels" />
+        <result column="pod_cidr" property="podCidr" />
+        <result column="cpu_cap" property="cpuCap" />
+        <result column="memory_cap" property="memoryCap" />
+        <result column="gpu_cap" property="gpuCap" />
+        <result column="gmem_cap" property="gmemCap" />
+        <result column="pods_cap" property="podsCap" />
+        <result column="hugepages1g_cap" property="hugepages1gCap" />
+        <result column="hugepages2m_cap" property="hugepages2mCap" />
+        <result column="ephemeral_storage_cap" property="ephemeralStorageCap" />
+        <result column="cpu_allocatable" property="cpuAllocatable" />
+        <result column="memory_allocatable" property="memoryAllocatable" />
+        <result column="gpu_allocatable" property="gpuAllocatable" />
+        <result column="gmem_allocatable" property="gmemAllocatable" />
+        <result column="pods_allocatable" property="podsAllocatable" />
+        <result column="hugepages1g_allocatable" property="hugepages1gAllocatable" />
+        <result column="hugepages2m_allocatable" property="hugepages2mAllocatable" />
+        <result column="ephemeral_storage_allocatable" property="ephemeralStorageAllocatable" />
+        <result column="internal_ip" property="internalIp" />
+        <result column="host_name" property="hostName" />
+        <result column="machine_id" property="machineId" />
+        <result column="boot_id" property="bootId" />
+        <result column="kernel_version" property="kernelVersion" />
+        <result column="container_runtime_version" property="containerRuntimeVersion" />
+        <result column="kube_version" property="kubeVersion" />
+        <result column="system_uuid" property="systemUuid" />
+        <result column="kube_proxy_version" property="kubeProxyVersion" />
+        <result column="operating_system" property="operatingSystem" />
+        <result column="os_image" property="osImage" />
+        <result column="architecture" property="architecture" />
+        <result column="network_unavailable" property="networkUnavailable" />
+        <result column="network_reason" property="networkReason" />
+        <result column="memory_pressure" property="memoryPressure" />
+        <result column="memory_reason" property="memoryReason" />
+        <result column="network_message" property="networkMessage" />
+        <result column="memory_message" property="memoryMessage" />
+        <result column="disk_pressure" property="diskPressure" />
+        <result column="disk_reason" property="diskReason" />
+        <result column="disk_message" property="diskMessage" />
+        <result column="pid_pressure" property="pidPressure" />
+        <result column="pid_reason" property="pidReason" />
+        <result column="pid_message" property="pidMessage" />
+        <result column="kube_ready" property="kubeReady" />
+        <result column="kube_reason" property="kubeReason" />
+        <result column="kube_message" property="kubeMessage" />
+    </resultMap>
+    <resultMap id="KubeNodeStatDto" type="com.chinahuik.KubernetesManager.dto.KubeNodeStatDto">
+        <result column="cluster_id" property="clusterId" />
+        <result column="node_name" property="nodeName" />
+        <result column="host_ip" property="hostIp" />    
+        <result column="cpu_limit" property="cpuLimit" />
+        <result column="memory_request" property="memoryRequest" />
+        <result column="memory_limit" property="memoryLimit" />
+        <result column="gpu_request" property="gpuRequest" />
+        <result column="gpu_limit" property="gpuLimit" />
+        <result column="gmem_request" property="gmemRequest" />
+        <result column="gmem_limit" property="gmemLimit" />
+        
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        created_by,
+        update_time,
+        updated_by,
+        cluster_id,
+        uid, name, resource_version, annotations, self_link, labels, 
+        pod_cidr, cpu_cap, gpu_cap,pods_cap, hugepages1g_cap, hugepages2m_cap, 
+        memory_cap,gmem_cap, ephemeral_storage_cap, cpu_allocatable, gpu_allocatable,
+        pods_allocatable, hugepages1g_allocatable, 
+        hugepages2m_allocatable, memory_allocatable, gmem_allocatable,
+        ephemeral_storage_allocatable, internal_ip, 
+        host_name, machine_id, boot_id, kernel_version, 
+        container_runtime_version, kube_version, system_uuid, 
+        kube_proxy_version, operating_system, os_image, architecture, 
+        network_unavailable, network_reason, memory_pressure, 
+        memory_reason, network_message, memory_message, 
+        disk_pressure, disk_reason, disk_message, pid_pressure, 
+        pid_reason, pid_message, kube_ready, kube_reason, kube_message
+    </sql>
+    <select id="statResourceUse" resultMap="KubeNodeStatDto" parameterType="java.util.Map" >
+	SELECT 
+	    SUM( CASE WHEN kube_container.cpu_request IS NULL THEN 0 ELSE  kube_container.cpu_request END) as cpu_request,
+		SUM( CASE WHEN kube_container.memory_request IS NULL THEN 0 ELSE kube_container.memory_request END) as memory_request , 
+		SUM( CASE WHEN kube_container.gpu_request IS NULL THEN 0 ELSE kube_container.gpu_request END)  as gpu_request , 
+		SUM( CASE WHEN kube_container.gmem_request IS NULL THEN 0 ELSE kube_container.gmem_request END) as gmem_request, 
+		SUM( CASE WHEN kube_container.cpu_limit IS NULL THEN 0 ELSE  kube_container.cpu_limit END) as cpu_limit,
+		SUM( CASE WHEN kube_container.memory_limit IS NULL THEN 0 ELSE kube_container.memory_limit END) as memory_limit, 
+		SUM( CASE WHEN kube_container.gpu_limit IS NULL THEN 0 ELSE kube_container.gpu_limit END) as gpu_limit, 
+		SUM( CASE WHEN kube_container.gmem_limit IS NULL THEN 0 ELSE kube_container.gmem_limit END) as gmem_limit, 
+		kube_pod.cluster_id, 
+		kube_pod.node_name, 
+		kube_pod.host_ip
+	FROM kube_container INNER JOIN kube_pod 
+		ON kube_container.cluster_id = kube_pod.cluster_id 
+		AND kube_container.pod_name = kube_pod.`name` 
+		AND kube_container.namespace = kube_pod.namespace
+	WHERE kube_container.phase='running' and 1=1
+	<if test="clusterId != null">
+		and kube_container.cluster_id = #{clusterId}
+	</if>
+	GROUP BY kube_container.cluster_id,kube_pod.node_name,kube_pod.host_ip
+	</select>
+</mapper>

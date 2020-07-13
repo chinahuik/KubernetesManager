@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinahuik.KubernetesManager.dao.KubeClusterDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chinahuik.KubernetesManager.model.KubeCluster">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="created_by" property="createdBy" />
+    <result column="update_time" property="updateTime" />
+    <result column="updated_by" property="updatedBy" />
+        <result column="name" property="name" />
+        <result column="name_cn" property="nameCn" />
+        <result column="server_host" property="serverHost" />
+        <result column="tiller_host" property="tillerHost" />
+        <result column="server_port" property="serverPort" />
+        <result column="tiller_port" property="tillerPort" />
+        <result column="config" property="config" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        created_by,
+        update_time,
+        updated_by,
+        name, name_cn, server_host, tiller_host, server_port, tiller_port, config
+    </sql>
+
+</mapper>

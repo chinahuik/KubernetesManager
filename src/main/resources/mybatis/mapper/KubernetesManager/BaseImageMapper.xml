@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinahuik.KubernetesManager.dao.BaseImageDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chinahuik.KubernetesManager.model.BaseImage">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="created_by" property="createdBy" />
+    <result column="update_time" property="updateTime" />
+    <result column="updated_by" property="updatedBy" />
+        <result column="image_host" property="imageHost" />
+        <result column="image_repo" property="imageRepo" />
+        <result column="image_tag" property="imageTag" />
+        <result column="operating_system" property="operatingSystem" />
+        <result column="os_version" property="osVersion" />
+        <result column="develop_language" property="developLanguage" />
+        <result column="dev_lang_version" property="devLangVersion" />
+        <result column="command" property="command" />
+        <result column="start_args" property="startArgs" />
+        <result column="work_dir" property="workDir" />
+        <result column="port_expose" property="portExpose" />
+        <result column="labels" property="labels" />
+        <result column="size" property="size" />
+        <result column="layers" property="layers" />
+        <result column="dockerfile" property="dockerfile" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        created_by,
+        update_time,
+        updated_by,
+        image_host, image_repo, image_tag, operating_system, os_version, develop_language, dev_lang_version, command, start_args, work_dir, port_expose, labels, size, layers, dockerfile
+    </sql>
+
+</mapper>

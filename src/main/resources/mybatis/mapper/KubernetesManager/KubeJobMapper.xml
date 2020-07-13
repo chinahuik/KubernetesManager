@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinahuik.KubernetesManager.dao.KubeJobDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chinahuik.KubernetesManager.model.KubeJob">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="created_by" property="createdBy" />
+    <result column="update_time" property="updateTime" />
+    <result column="updated_by" property="updatedBy" />
+        <result column="uid" property="uid" />
+        <result column="cluster_id" property="clusterId" />
+        <result column="name" property="name" />
+        <result column="namespace" property="namespace" />
+        <result column="resource_version" property="resourceVersion" />
+        <result column="annotations" property="annotations" />
+        <result column="self_link" property="selfLink" />
+        <result column="labels" property="labels" />
+        <result column="backoff_limit" property="backoffLimit" />
+        <result column="completions" property="completions" />
+        <result column="parallelism" property="parallelism" />
+        <result column="selector" property="selector" />
+        <result column="template" property="template" />
+        <result column="completion_time" property="completionTime" />
+        <result column="start_time" property="startTime" />
+        <result column="succeeded" property="succeeded" />
+        <result column="complete_status" property="completeStatus" />
+        <result column="complete_time" property="completeTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        created_by,
+        update_time,
+        updated_by,
+        uid, cluster_id, name, namespace, resource_version, annotations, self_link, labels, backoff_limit, completions, parallelism, selector, template, completion_time, start_time, succeeded, complete_status, complete_time
+    </sql>
+
+</mapper>
